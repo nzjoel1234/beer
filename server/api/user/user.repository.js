@@ -16,14 +16,14 @@ function getUser (id, callback) {
     User.findOne({ _id: objectIdHelper.toObjectId(id) }, '-passwordHash')
         .exec()
         .then(function (user) { callback(null, user); })
-        .catch(function (err) { callback(err); });
+        .catch(function (err) { callback(err.errmsg); });
 }
 
 function getUsers (callback) {
     User.find({}, '-passwordHash')
         .exec()
         .then(function (users) { callback(null, users); })
-        .catch(function (err) { callback(err); });
+        .catch(function (err) { callback(err.errmsg); });
 }
 
 function createUser (username, password, callback) {
@@ -36,14 +36,14 @@ function createUser (username, password, callback) {
         
         user.save()
             .then(function() { getUser(user._id, callback); })
-            .catch(function (err) { callback(err); });
+            .catch(function (err) { callback(err.errmsg); });
     });
 };
 
 function deleteUser (id, callback) {
     User.findByIdAndRemove(objectIdHelper.toObjectId(id)).exec()
         .then(function() { callback(); })
-        .catch(function (error) { callback(error) });
+        .catch(function (err) { callback(err.errmsg); });
 }
 
 /*

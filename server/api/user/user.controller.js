@@ -6,14 +6,14 @@ var UserRepository = require('./user.repository');
 function validationError(res, statusCode) {
   statusCode = statusCode || 422;
   return function(err) {
-    res.status(statusCode).json(err);
+    res.status(statusCode).json({ error: err });
   }
 }
 
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
-    res.status(statusCode).send(err);
+    res.status(statusCode).send({ error: err });
   };
 }
 
@@ -64,7 +64,6 @@ module.exports.show = function (req, res, next) {
 
 /**
  * Deletes a user
- * restriction: 'admin'
  */
 module.exports.delete = function (req, res) {
     UserRepository.deleteUser(req.params.id, function(err) {
