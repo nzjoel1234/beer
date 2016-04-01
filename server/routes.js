@@ -7,7 +7,7 @@
 function setup(app) {
     // Insert routes below
     //app.use('/api/beers', require('./api/beer'));
-    app.use('/api/users', require('./api/user'));
+    app.use('/api', require('./api'));
     
     app.use('/', require('./index'));
 
