@@ -1,6 +1,5 @@
 'use strict';
 
-var mongoose = require('mongoose');
 var User = require('./user.model');
 var bcrypt = require('bcrypt-nodejs');
 var objectIdHelper = require('../../utils/objectIdHelper');

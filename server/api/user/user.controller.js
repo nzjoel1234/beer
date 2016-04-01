@@ -1,6 +1,5 @@
 'use strict';
 
-var User = require('./user.model');
 var UserRepository = require('./user.repository');
 
 function validationError(res, statusCode) {
